@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='drawingForm.05.css' />
+<script type='text/javascript' src='w3.openCity.js'></script>
+
+    </head>
+<body style="background-color:lightgreen;" onload="defaultOpen()">
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'a')">a</button>
+  <button class="tablinks" onclick="openCity(event, 'ellipse')">ellipse</button>
+  <button class="tablinks" onclick="openCity(event, 'g')">g</button>
+  <button class="tablinks" onclick="openCity(event, 'image')">image</button>
+  <button class="tablinks" onclick="openCity(event, 'line')">line</button>
+  <button class="tablinks" onclick="openCity(event, 'path')">path</button>
+  <button class="tablinks" onclick="openCity(event, 'polygon')">polygon</button>
+  <button class="tablinks" onclick="openCity(event, 'polyline')">polyline</button>
+  <button class="tablinks" onclick="openCity(event, 'rect')">rect</button>
+  <button class="tablinks" onclick="openCity(event, 'svgSvg')">svg</button>
+  <button class="tablinks" onclick="openCity(event, 'sym')">sym</button>
+  <button class="tablinks" onclick="openCity(event, 'text')">text</button>
+  <button class="tablinks" onclick="openCity(event, 'use')">use</button>
+  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'VIEW')">
+  VIEW</button>
+  <button class="tablinks" onclick="openCity(event, 'EDIT')">
+  EDIT</button>
+  <button class="tablinks" onclick="openCity(event, 'SOURCE')">SOURCE</button>
+  <button class="tablinks" onclick="openCity(event, 'HELP')">HELP</button>
+</div>
+
+<!-- Tab content -->
+<div id="a" class="tabcontent">
+id:<input type='text' id='idA' value='a01' size='4'>
+href:<input type='text' id='hrefA' value='http://example.com' 
+size='60'>
+<input type="button" value="ADD" onclick="addA()"/>
+</div>
+
+<div id="ellipse" class="tabcontent">
+cx:<input type='text' id='cxEllipse' value='100' size='4'>
+cy:<input type='text' id='cyEllipse' value='100' size='4'>
+rx:<input type='text' id='rxEllipse' value='10' size='4'>
+ry<input type='text' id='ryEllipse' value='10' size='4'>
+style:<input type='text' id='styleEllipse' value='stroke:black;stroke-width:1;fill:none;' 
+size='40'>
+par:<input type='text' id='parEllipse' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addEllipse()"/>
+</div>
+
+<div id="g" class="tabcontent">
+id:<input type='text' id='idG' value='g01' size='4'>
+style:<input type='text' id='styleG' value='' 
+size='60'><br/>
+transform:<input type='text' id='transformG' value='rotate(0 0 0)' 
+size='60'>
+<input type="button" value="ADD" onclick="addG()"/>
+</div>
+
+<div id="image" class="tabcontent">
+x:<input type='text' id='xImage' value='100' size='4'>
+y:<input type='text' id='yImage' value='100' size='4'>
+width:<input type='text' id='widthImage' value='100' size='4'>
+height:<input type='text' id='heightImage' value='100' size='4'>
+href:<input type='text' id='hrefImage' value='https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png' 
+size='60'><br/>
+style:<input type='text' id='styleImage' value='opacity:1;' size='40'>
+par:<input type='text' id='parImage' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addImage()"/>
+</div>
+
+<div id="line" class="tabcontent">
+x1:<input type='text' id='x1' value='10' size='4'>
+y1:<input type='text' id='y1' value='10' size='4'>
+x2:<input type='text' id='x2' value='100' size='4'>
+y2:<input type='text' id='y2' value='100' size='4'>
+style:<input type='text' id='styleLine' value='stroke:black;stroke-width:1;fill:none;' 
+size='40'>
+par:<input type='text' id='parLine' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addLine()"/> 
+</div>
+
+<div id="path" class="tabcontent">
+d:<input type='text' id='d' value='M50,50 A30,30 0,0,1 35,20' size='50'>
+style:<input type='text' id='stylePath' value='stroke:black;stroke-width:1;fill:none;' 
+size='40'>
+par:<input type='text' id='parPath' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addPath()"/> 
+</div>
+
+<div id="polygon" class="tabcontent">
+points:<input type='text' id='pointsPolygon' value='10,10 20,20 30,10' size='50'>
+style:<input type='text' id='stylePolygon' value='stroke:black;stroke-width:1;fill:none;' 
+size='40'>
+par:<input type='text' id='parPolygon' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addPolygon()"/> 
+</div>
+
+<div id="polyline" class="tabcontent">
+points:<input type='text' id='pointsPolyline' value='10,10 20,20 30,10' size='50'>
+style:<input type='text' id='stylePolyline' value='stroke:black;stroke-width:1;fill:none;' 
+size='40'>
+par:<input type='text' id='parPolyline' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addPolyline()"/> 
+</div>
+
+<div id="rect" class="tabcontent">
+x:<input type='text' id='xRect' value='10' size='4'>
+y:<input type='text' id='yRect' value='10' size='4'>
+width:<input type='text' id='widthRect' value='100' size='4'>
+height<input type='text' id='heightRect' value='100' size='4'>
+rx:<input type='text' id='rxRect' value='0' size='2'>
+ry:<input type='text' id='ryRect' value='0' size='2'>
+style:<input type='text' id='styleRect' value='stroke:black;stroke-width:1;fill:none;' 
+size='40'>
+par:<input type='text' id='parRect' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addRect()"/> 
+</div>    
+
+<div id="svgSvg" class="tabcontent">
+x:<input type='text' id='xSvg' value='0' size='4'>
+y:<input type='text' id='ySvg' value='0' size='4'>
+width:<input type='text' id='widthSvg' value='500' size='4'>
+height<input type='text' id='heightSvg' value='500' size='4'>
+viewBox:<input type='text' id='viewBox' value='0 0 500 500' size='10'>
+<input type="button" value="CHANGE" onclick="changeSvg()"/> 
+</div>   
+
+<div id="sym" class="tabcontent">
+id:<input type='text' id='idSym' value='sym01' size='6'>
+style:<input type='text' id='styleSym' value='' 
+size='60'>
+<input type="button" value="ADD" onclick="addSym()"/>
+</div>
+
+<div id="text" class="tabcontent">
+x:<input type='text' id='xText' value='10' size='4'>
+y:<input type='text' id='yText' value='10' size='4'>
+dx:<input type='text' id='dxText' value='100' size='4'>
+dy<input type='text' id='dyText' value='100' size='4'>
+style:<input type='text' id='styleText' value='stroke:black;stroke-width:1;fill:none;' 
+size='70'><br/>
+text:<input type='text' id='data' value='aaaa' size='80'>
+par:<input type='text' id='parText' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addText()"/> 
+</div>    
+
+<div id="use" class="tabcontent">
+x:<input type='text' id='xUse' value='10' size='4'>
+y:<input type='text' id='yUse' value='10' size='4'>
+href:<input type='text' id='hrefUse' value='#sym01' size='60'><br/>
+style:<input type='text' id='styleUse' value='opacity:1;' size='40'>
+par:<input type='text' id='parUse' value='svg' size='5'>
+<input type="button" value="ADD" onclick="addUse()"/>
+</div>
+
+<div id="VIEW" class="tabcontent">
+<svg id="svg" width="500" height="500" viewBox="0 0 500 500" 
+onclick="clicked(evt)">
+<rect id="draw" x="0" y="0" width="500" height="500" style="stroke:black;fill:white;"/>
+<circle id="c1" cx="0" cy="0" r="3" style="fill:red;"/>
+</svg>
+</div>
+
+<div id="EDIT" class="tabcontent">
+id:<input type='text' id='idAttr' value='' size='20'>
+name:<input type='text' id='nameAttr' value='' size='10'>
+value:<input type='text' id='valueAttr' value='' size='50'>
+<input type="button" value="setAttr" onclick="setAttr()"/><hr>
+tagName:<input type='text' id='tagName' value='' size='20'>
+index:<input type='text' id='index' value='' size='3'>
+idValue:<input type='text' id='idValue' value='' size='20'>
+<input type="button" value="setId" onclick="setId()"/><hr>
+
+id:<input type='text' id='idElement' value='' size='20'>
+<input type="button" value="removeElement" onclick="removeElement()"/>
+</div>
+
+<div id="SOURCE" class="tabcontent">
+<textarea id="ta" rows="20" cols="80"></textarea>
+<input type="button" value="Update" onclick="showSource()"/> 
+</div>
+
+<div id="HELP" class="tabcontent">
+*FlashSvgDrawingForm* is Public Domain Software.
+<ul>
+<li>Use svg element tabs to draw.
+<li>Use the |svg| tab to change the viewBox.
+<li>Use the |VIEW| tab to full svg view. Click to get xy coordinates.
+<li>Use the |SOURCE| tab to view the generated svg source code, copy and paste.
+<li>Use the |HELP| tab to view this help.
+</ul>
+</div>
+
+<hr>
+<script type='text/javascript' src='drawingForm.07.js'></script>
+
+    </body>
+</html>
